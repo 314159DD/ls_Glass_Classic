@@ -1,42 +1,57 @@
-# This addon is officially retired and won't receive any updates for Midnight.
+# LS: Glass Classic
 
-# LS: Glass
+A **WoW Classic Era** port of [LS: Glass](https://github.com/ls-/ls_Glass) by lightspark.
 
-Replacement for the default chat. Smooth as glass!
+Chat messages slide and fade in as they arrive, then fade away again once they are old. The chat
+frame, its tabs and its buttons stay invisible until you move the mouse over them.
 
 ![Imgur](https://i.imgur.com/8lj13ch.gif)
 
-## Download
+## About this fork
 
-- [Curse](https://www.curseforge.com/wow/addons/ls-glass)
-- [Wago](https://addons.wago.io/addons/ls-glass)
+Upstream LS: Glass targets retail and has been officially retired by its author, who does not play
+Classic and declined to support it. This fork exists only to keep the addon working on Classic Era
+(Interface 11509, patch 1.15.9).
+
+It is not maintained by the original author. Please do not send him bug reports about this fork.
+
+## Install
+
+Copy the `ls_Glass` folder into:
+
+```
+World of Warcraft\_classic_era_\Interface\AddOns\
+```
 
 ## Options
 
-Use **`/LSGLASS`** or **`/LSG`** to open the in-game config.
+Use **`/lsglass`** or **`/lsg`** to open the in-game config.
 
-## Feedback and Feature Requests
+Fade timing lives under **Chat -> Fading -> Fade Out Delay**.
 
-If you found a bug or want to share an idea on how to improve my addon, either use the issue tracker on [GitHub](https://github.com/ls-/ls_Glass/issues) or join our [Discord](https://discord.gg/7QcJgQkDYD) server.
+## Prat 3.0
 
-## Localisation
+Both addons run together fine. Prat's **Editbox** module takes over the chat input box, though: it
+reparents the box and sets its font directly, which overrides the Edit Box section here. Disable
+that one Prat module if you want LS: Glass to own the input box. The config shows a note in that
+section while the module is active.
 
-Feel free to add and/or review translations on [Curse](https://www.curseforge.com/wow/addons/ls-glass/localization), alternatively, you may create a PR on [project's GitHub page](https://github.com/ls-/ls_Glass/pulls).
+## Changes from upstream
 
-## FAQ
-
-**`Q:`** How is this addon related to Glass by mixxorz?  
-**`A:`** Originally, the goal was to take over that addon and maintain it. However, after reviewing the original code to figure out what I needed to do to update it for the Dragonflight expansion I decided to start from scratch. But it's fair to say that the addon is inspired by Glass, hence its name.
-  
-**`Q:`** How do I move and/or resize the chat frame?  
-**`A:`** Use "Edit Mode". There's a tiny triangle in the bottom right corner of the "Chat Frame" mover that's used for resizing. Hopefully, Blizz will change it to something more noticeable in the future.
-
-**`Q:`** Does this addon support Classic WotLK?  
-**`A:`** No? Maybe? Idk. I only play retail WoW, so I'm not familiar with what's going on in other versions code-wise. I have no plans to support an addon for the version of the game I don't even play.
-
-**`Q:`** I used Addons CPU Usage and saw big numbers? What's going on?  
-**`A:`** Simply put, WoW chat is insanely inefficient and slow. Without going into technicalities, simply scrolling through the chat history is more CPU intensive than, let's say, idling of an entire addon like ElvUI, and that beast does a lot. Other chat addons get smaller numbers because they don't replace the chat output, everything is still displayed via the default scrolling frame, however, LS: Glass replaces that. That's why all the CPU time spent on scrolling is attributed to it instead of being hidden from your eyes. That said, I do disable all of that on the default chat frames, so you don't get hit by the double whammy.
+- Interface version raised to 11509 for Classic Era.
+- Chat tab textures use the Classic Era keys (`leftTexture`, `leftSelectedTexture`,
+  `leftHighlightTexture` and friends) rather than the retail `Left` / `ActiveLeft` / `HighlightLeft`.
+- The chat edit box no longer touches the focus border textures, which do not exist on Classic Era.
+- The minimize button is looked up as `ChatFrame<N>MinimizeButton`, where Classic Era parents it,
+  instead of under the button frame.
+- `QuickJoinToastButton`, `AddonCompartmentFrame`, `NewcomerHint` and `BattlePetTooltip` are guarded,
+  as Classic Era has no such frames. The Quick Join toast option is hidden there.
+- Fixed a hook that registered `ChatPageDown` as a second `ChatPageUp`, so page down works.
+- Added a note in the Edit Box settings when Prat's Editbox module owns the input box.
 
 ## License
 
-Please see [LICENSE](https://github.com/ls-/ls_Glass/blob/master/LICENSE.txt) file.
+Apache License 2.0, unchanged from upstream. See [LICENSE.txt](LICENSE.txt).
+
+The original addon is the work of lightspark. This is a modified distribution; the modifications are
+listed above.
