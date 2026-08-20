@@ -55,17 +55,9 @@ end
 local handledTabs = {}
 
 local TAB_TEXTURES = {
-	"Left",
-	"Middle",
-	"Right",
-
-	-- "ActiveLeft",
-	-- "ActiveMiddle",
-	-- "ActiveRight",
-
-	-- "HighlightLeft",
-	-- "HighlightMiddle",
-	-- "HighlightRight",
+	"leftTexture",
+	"middleTexture",
+	"rightTexture",
 }
 
 function E:HandleChatTab(frame)
@@ -91,43 +83,43 @@ function E:HandleChatTab(frame)
 	frame.glow:SetPoint("BOTTOMLEFT", 8, 2)
 	frame.glow:SetPoint("BOTTOMRIGHT", -8, 2)
 
-	frame.ActiveLeft:ClearAllPoints()
-	frame.ActiveLeft:SetPoint("TOPLEFT", frame, "TOPLEFT", 0, -2)
-	frame.ActiveLeft:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
-	frame.ActiveLeft:SetTexCoord(0, 1, 0.5, 1)
-	frame.ActiveLeft:SetSize(8, 8)
+	frame.leftSelectedTexture:ClearAllPoints()
+	frame.leftSelectedTexture:SetPoint("TOPLEFT", frame, "TOPLEFT", 0, -2)
+	frame.leftSelectedTexture:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
+	frame.leftSelectedTexture:SetTexCoord(0, 1, 0.5, 1)
+	frame.leftSelectedTexture:SetSize(8, 8)
 
-	frame.ActiveRight:ClearAllPoints()
-	frame.ActiveRight:SetPoint("TOPRIGHT", frame, "TOPRIGHT", 0, -2)
-	frame.ActiveRight:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
-	frame.ActiveRight:SetTexCoord(1, 0, 0.5, 1)
-	frame.ActiveRight:SetSize(8, 8)
+	frame.rightSelectedTexture:ClearAllPoints()
+	frame.rightSelectedTexture:SetPoint("TOPRIGHT", frame, "TOPRIGHT", 0, -2)
+	frame.rightSelectedTexture:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
+	frame.rightSelectedTexture:SetTexCoord(1, 0, 0.5, 1)
+	frame.rightSelectedTexture:SetSize(8, 8)
 
-	frame.ActiveMiddle:ClearAllPoints()
-	frame.ActiveMiddle:SetPoint("TOPLEFT", frame.HighlightLeft, "TOPRIGHT", 0, 0)
-	frame.ActiveMiddle:SetPoint("TOPRIGHT", frame.HighlightRight, "TOPLEFT", 0, 0)
-	frame.ActiveMiddle:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
-	frame.ActiveMiddle:SetTexCoord(0, 1, 0, 0.5)
-	frame.ActiveMiddle:SetSize(8, 8)
+	frame.middleSelectedTexture:ClearAllPoints()
+	frame.middleSelectedTexture:SetPoint("TOPLEFT", frame.leftHighlightTexture, "TOPRIGHT", 0, 0)
+	frame.middleSelectedTexture:SetPoint("TOPRIGHT", frame.rightHighlightTexture, "TOPLEFT", 0, 0)
+	frame.middleSelectedTexture:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
+	frame.middleSelectedTexture:SetTexCoord(0, 1, 0, 0.5)
+	frame.middleSelectedTexture:SetSize(8, 8)
 
-	frame.HighlightLeft:ClearAllPoints()
-	frame.HighlightLeft:SetPoint("TOPLEFT", frame, "TOPLEFT", 0, -2)
-	frame.HighlightLeft:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
-	frame.HighlightLeft:SetTexCoord(0, 1, 0.5, 1)
-	frame.HighlightLeft:SetSize(8, 8)
+	frame.leftHighlightTexture:ClearAllPoints()
+	frame.leftHighlightTexture:SetPoint("TOPLEFT", frame, "TOPLEFT", 0, -2)
+	frame.leftHighlightTexture:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
+	frame.leftHighlightTexture:SetTexCoord(0, 1, 0.5, 1)
+	frame.leftHighlightTexture:SetSize(8, 8)
 
-	frame.HighlightRight:ClearAllPoints()
-	frame.HighlightRight:SetPoint("TOPRIGHT", frame, "TOPRIGHT", 0, -2)
-	frame.HighlightRight:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
-	frame.HighlightRight:SetTexCoord(1, 0, 0.5, 1)
-	frame.HighlightRight:SetSize(8, 8)
+	frame.rightHighlightTexture:ClearAllPoints()
+	frame.rightHighlightTexture:SetPoint("TOPRIGHT", frame, "TOPRIGHT", 0, -2)
+	frame.rightHighlightTexture:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
+	frame.rightHighlightTexture:SetTexCoord(1, 0, 0.5, 1)
+	frame.rightHighlightTexture:SetSize(8, 8)
 
-	frame.HighlightMiddle:ClearAllPoints()
-	frame.HighlightMiddle:SetPoint("TOPLEFT", frame.HighlightLeft, "TOPRIGHT", 0, 0)
-	frame.HighlightMiddle:SetPoint("TOPRIGHT", frame.HighlightRight, "TOPLEFT", 0, 0)
-	frame.HighlightMiddle:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
-	frame.HighlightMiddle:SetTexCoord(0, 1, 0, 0.5)
-	frame.HighlightMiddle:SetSize(8, 8)
+	frame.middleHighlightTexture:ClearAllPoints()
+	frame.middleHighlightTexture:SetPoint("TOPLEFT", frame.leftHighlightTexture, "TOPRIGHT", 0, 0)
+	frame.middleHighlightTexture:SetPoint("TOPRIGHT", frame.rightHighlightTexture, "TOPLEFT", 0, 0)
+	frame.middleHighlightTexture:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
+	frame.middleHighlightTexture:SetTexCoord(0, 1, 0, 0.5)
+	frame.middleHighlightTexture:SetSize(8, 8)
 
 	if frame.conversationIcon then
 		frame.conversationIcon:SetPoint("RIGHT", frame.Text, "LEFT", 0, 0)
@@ -147,17 +139,9 @@ end
 local handledMiniTabs = {}
 
 local MINI_TAB_TEXTURES = {
-	"Left",
-	"Middle",
-	"Right",
-
-	-- "ActiveLeft",
-	-- "ActiveMiddle",
-	-- "ActiveRight",
-
-	-- "HighlightLeft",
-	-- "HighlightMiddle",
-	-- "HighlightRight",
+	"leftTexture",
+	"middleTexture",
+	"rightTexture",
 }
 
 function E:HandleMinimizedTab(frame)
@@ -181,24 +165,24 @@ function E:HandleMinimizedTab(frame)
 	frame.glow:SetPoint("BOTTOMLEFT", 8, 2)
 	frame.glow:SetPoint("BOTTOMRIGHT", -24, 2)
 
-	frame.HighlightLeft:ClearAllPoints()
-	frame.HighlightLeft:SetPoint("TOPLEFT", frame, "TOPLEFT", 0, -2)
-	frame.HighlightLeft:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
-	frame.HighlightLeft:SetTexCoord(0, 1, 0.5, 1)
-	frame.HighlightLeft:SetSize(8, 8)
+	frame.leftHighlightTexture:ClearAllPoints()
+	frame.leftHighlightTexture:SetPoint("TOPLEFT", frame, "TOPLEFT", 0, -2)
+	frame.leftHighlightTexture:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
+	frame.leftHighlightTexture:SetTexCoord(0, 1, 0.5, 1)
+	frame.leftHighlightTexture:SetSize(8, 8)
 
-	frame.HighlightRight:ClearAllPoints()
-	frame.HighlightRight:SetPoint("TOPRIGHT", frame, "TOPRIGHT", 0, -2)
-	frame.HighlightRight:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
-	frame.HighlightRight:SetTexCoord(1, 0, 0.5, 1)
-	frame.HighlightRight:SetSize(8, 8)
+	frame.rightHighlightTexture:ClearAllPoints()
+	frame.rightHighlightTexture:SetPoint("TOPRIGHT", frame, "TOPRIGHT", 0, -2)
+	frame.rightHighlightTexture:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
+	frame.rightHighlightTexture:SetTexCoord(1, 0, 0.5, 1)
+	frame.rightHighlightTexture:SetSize(8, 8)
 
-	frame.HighlightMiddle:ClearAllPoints()
-	frame.HighlightMiddle:SetPoint("TOPLEFT", frame.HighlightLeft, "TOPRIGHT", 0, 0)
-	frame.HighlightMiddle:SetPoint("TOPRIGHT", frame.HighlightRight, "TOPLEFT", 0, 0)
-	frame.HighlightMiddle:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
-	frame.HighlightMiddle:SetTexCoord(0, 1, 0, 0.5)
-	frame.HighlightMiddle:SetSize(8, 8)
+	frame.middleHighlightTexture:ClearAllPoints()
+	frame.middleHighlightTexture:SetPoint("TOPLEFT", frame.leftHighlightTexture, "TOPRIGHT", 0, 0)
+	frame.middleHighlightTexture:SetPoint("TOPRIGHT", frame.rightHighlightTexture, "TOPLEFT", 0, 0)
+	frame.middleHighlightTexture:SetTexture("Interface\\AddOns\\ls_Glass\\assets\\border-highlight")
+	frame.middleHighlightTexture:SetTexCoord(0, 1, 0, 0.5)
+	frame.middleHighlightTexture:SetSize(8, 8)
 
 	-- reset the tab
 	if not frame.selectedColorTable then
