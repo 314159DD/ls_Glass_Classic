@@ -108,7 +108,7 @@ hooksecurefunc(ChatFrameUtil, "ChatPageUp", function()
 	end
 end)
 
-hooksecurefunc(ChatFrameUtil, "ChatPageUp", function()
+hooksecurefunc(ChatFrameUtil, "ChatPageDown", function()
 	local slidingFrame = E:GetSlidingFrameForChatFrame(SELECTED_CHAT_FRAME)
 	if slidingFrame then
 		slidingFrame:OnMouseWheel(DOWN, MAX_SCROLL)
@@ -188,7 +188,7 @@ end
 local function chatFrame_OnHyperlinkEnterHook(self, link, text, fontString)
 	if C.db.profile.chat.tooltips then
 		local linkType = LinkUtil.SplitLinkData(link)
-		if linkType == "battlepet" then
+		if linkType == "battlepet" and BattlePetToolTip_ShowLink then
 			GameTooltip:SetOwner(self, "ANCHOR_CURSOR_RIGHT", 4, 2)
 			BattlePetToolTip_ShowLink(text)
 		elseif linkType ~= "trade" then
@@ -210,7 +210,7 @@ local function chatFrame_OnHyperlinkEnterHook(self, link, text, fontString)
 end
 
 local function chatFrame_OnHyperlinkLeaveHook(self)
-	BattlePetTooltip:Hide()
+	if BattlePetTooltip then BattlePetTooltip:Hide() end
 	GameTooltip:Hide()
 
 	local slidingFrame = E:GetSlidingFrameForChatFrame(self)

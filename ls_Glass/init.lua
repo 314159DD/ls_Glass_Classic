@@ -82,10 +82,10 @@ E:RegisterEvent("ADDON_LOADED", function(arg1)
 			E:HandleMinimizeButton(_G["ChatFrame" .. i .. "ButtonFrameMinimizeButton"], _G["ChatFrame" .. i .. "Tab"])
 
 			if i == 1 then
-				E:HandleQuickJoinToastButton(QuickJoinToastButton)
-				E:HandleChannelButton(ChatFrameChannelButton)
+				if QuickJoinToastButton then E:HandleQuickJoinToastButton(QuickJoinToastButton) end
+				if ChatFrameChannelButton then E:HandleChannelButton(ChatFrameChannelButton) end
 				E:HandleMenuButton(ChatFrameMenuButton)
-				E:HandleTTSButton(TextToSpeechButton)
+				if TextToSpeechButton then E:HandleTTSButton(TextToSpeechButton) end
 			end
 		end
 
@@ -198,7 +198,7 @@ E:RegisterEvent("ADDON_LOADED", function(arg1)
 
 		Settings.RegisterAddOnCategory(Settings.RegisterCanvasLayoutCategory(panel, L["LS_GLASS"]))
 
-		AddonCompartmentFrame:RegisterAddon({
+		if AddonCompartmentFrame then AddonCompartmentFrame:RegisterAddon({
 			text = L["LS_GLASS"],
 			icon = "Interface\\AddOns\\ls_Glass\\assets\\logo-32",
 			func = function()
@@ -210,7 +210,7 @@ E:RegisterEvent("ADDON_LOADED", function(arg1)
 					LibStub("AceConfigDialog-3.0"):Open(addonName)
 				end
 			end,
-		})
+		}) end
 
 		E:RegisterEvent("PLAYER_REGEN_DISABLED", function()
 			LibStub("AceConfigDialog-3.0"):Close(addonName)

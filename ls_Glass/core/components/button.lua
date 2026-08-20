@@ -32,7 +32,7 @@ local function updateButtonFramePosition(frame, chatFrame)
 		end
 
 		-- hooks will take care of the rest
-		QuickJoinToastButton:SetToastDirection(position == "right")
+		if QuickJoinToastButton then QuickJoinToastButton:SetToastDirection(position == "right") end
 	end
 end
 
@@ -161,7 +161,7 @@ function E:HandleMaximizeButton(frame)
 end
 
 function E:HandleQuickJoinToastButton(frame)
-	for i = #ChatAlertFrame.alertFrameSubSystems, 1, -1 do
+	for i = #(ChatAlertFrame.alertFrameSubSystems or {}), 1, -1 do
 		if ChatAlertFrame.alertFrameSubSystems[i].anchorFrame == frame then
 			t_remove(ChatAlertFrame.alertFrameSubSystems, i)
 		end
@@ -230,7 +230,11 @@ function E:HandleChannelButton(frame)
 	handleButton(frame, 0, 0.25, 0.5, 1)
 
 	frame:ClearAllPoints()
-	frame:SetPoint("TOPRIGHT", QuickJoinToastButton, "BOTTOMRIGHT", 0, -1)
+	if QuickJoinToastButton then
+		frame:SetPoint("TOPRIGHT", QuickJoinToastButton, "BOTTOMRIGHT", 0, -1)
+	else
+		frame:SetPoint("TOPRIGHT", ChatFrame1.buttonFrame, "TOPRIGHT", 2, 0)
+	end
 
 	frame.Icon:SetTexture(0)
 
@@ -254,7 +258,7 @@ end
 function E:HandleTTSButton(frame)
 	local parent = frame:GetParent()
 
-	for i = #ChatAlertFrame.alertFrameSubSystems, 1, -1 do
+	for i = #(ChatAlertFrame.alertFrameSubSystems or {}), 1, -1 do
 		if ChatAlertFrame.alertFrameSubSystems[i].anchorFrame == parent then
 			t_remove(ChatAlertFrame.alertFrameSubSystems, i)
 		end

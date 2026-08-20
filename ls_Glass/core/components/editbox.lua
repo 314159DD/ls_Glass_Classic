@@ -45,7 +45,7 @@ function E:HandleEditBox(frame)
 	frame:SetFontObject("LSGlassEditBoxFont")
 	frame.header:SetFontObject("LSGlassEditBoxFont")
 	frame.headerSuffix:SetFontObject("LSGlassEditBoxFont")
-	frame.NewcomerHint:SetFontObject("LSGlassEditBoxFont")
+	if frame.NewcomerHint then frame.NewcomerHint:SetFontObject("LSGlassEditBoxFont") end
 	frame.prompt:SetFontObject("LSGlassEditBoxFont")
 end
 
