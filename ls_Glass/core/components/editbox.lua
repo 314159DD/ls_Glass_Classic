@@ -12,10 +12,6 @@ local EDIT_BOX_TEXTURES = {
 	"Left",
 	"Mid",
 	"Right",
-
-	"FocusLeft",
-	"FocusMid",
-	"FocusRight",
 }
 
 function E:HandleEditBox(frame)

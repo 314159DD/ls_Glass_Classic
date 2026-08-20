@@ -79,7 +79,7 @@ E:RegisterEvent("ADDON_LOADED", function(arg1)
 			E:HandleChatTab(_G["ChatFrame" .. i .. "Tab"])
 			E:HandleEditBox(_G["ChatFrame" .. i .. "EditBox"])
 			E:HandleButtonFrame(_G["ChatFrame" .. i .. "ButtonFrame"], _G["ChatFrame" .. i])
-			E:HandleMinimizeButton(_G["ChatFrame" .. i .. "ButtonFrameMinimizeButton"], _G["ChatFrame" .. i .. "Tab"])
+			E:HandleMinimizeButton(_G["ChatFrame" .. i .. "MinimizeButton"], _G["ChatFrame" .. i .. "Tab"])
 
 			if i == 1 then
 				if QuickJoinToastButton then E:HandleQuickJoinToastButton(QuickJoinToastButton) end
@@ -111,7 +111,7 @@ E:RegisterEvent("ADDON_LOADED", function(arg1)
 					E:HandleChatTab(_G[chatFrame:GetName() .. "Tab"])
 					E:HandleEditBox(_G[chatFrame:GetName() .. "EditBox"])
 					E:HandleButtonFrame(_G[chatFrame:GetName() .. "ButtonFrame"], _G[chatFrame:GetName()])
-					E:HandleMinimizeButton(_G[chatFrame:GetName() .. "ButtonFrameMinimizeButton"], _G[chatFrame:GetName() .. "Tab"])
+					E:HandleMinimizeButton(_G[chatFrame:GetName() .. "MinimizeButton"], _G[chatFrame:GetName() .. "Tab"])
 
 					tempChatFrames[frame] = true
 				end
