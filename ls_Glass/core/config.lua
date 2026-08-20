@@ -20,6 +20,15 @@ elseif locale == "ruRU" then
 	defaultAlphabet = "russian"
 end
 
+-- Prat's Editbox module reparents the chat edit box and sets its font directly, which overrides
+-- everything in the edit box section
+local function isPratEditBoxActive()
+	if not _G.Prat then return false end
+
+	local module = _G.Prat:GetModule("Editbox", true)
+	return not not (module and module:IsEnabled())
+end
+
 local showLinkCopyPopup
 do
 	local link = ""
@@ -483,6 +492,14 @@ function E:CreateConfig()
 							return C.db.profile.edit[info[#info]]
 						end,
 						args = {
+							prat_warning = {
+								order = 0,
+								type = "description",
+								name = L["PRAT_EDITBOX_WARNING"],
+								hidden = function()
+									return not isPratEditBoxActive()
+								end,
+							},
 							alpha = {
 								order = 1,
 								type = "range",
